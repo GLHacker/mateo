@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f0f9ff; /* Light blue background */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka One', cursive;
+}
+
+.btn-primary {
+  @apply bg-mateo-blue text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-blue-400 transition transform hover:scale-105;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-md p-4;
+}
