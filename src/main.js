@@ -3,8 +3,8 @@ import Navbar from './components/Navbar.js';
 import { render } from './router.js';
 
 document.querySelector('#app').innerHTML = `
-  <div class="min-h-screen flex flex-col md:flex-row app-background">
-    <div id="app-content" class="flex-1 pb-24 md:pb-0 md:pt-24 overflow-y-auto">
+  <div class="min-h-screen flex flex-col app-background">
+    <div id="app-content" class="flex-1 pt-24 pb-8 overflow-y-auto">
       <!-- Page content will be injected here -->
     </div>
   </div>

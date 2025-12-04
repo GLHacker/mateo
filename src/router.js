@@ -46,9 +46,3 @@ export function render(path) {
 window.onpopstate = () => {
     render(window.location.pathname);
 };
-
-// Initial render with normalized path
-const initialPath = normalizePath(window.location.pathname);
-if (initialPath !== '/') {
-    render(initialPath);
-}
