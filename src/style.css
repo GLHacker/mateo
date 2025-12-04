@@ -237,9 +237,11 @@ button:focus-visible {
 }
 
 .app-background {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  background-image: url('/mateo/background.jpg?v=3');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   position: relative;
 }
 
@@ -250,11 +252,7 @@ button:focus-visible {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/mateo/background.jpg?v=3');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.3;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
