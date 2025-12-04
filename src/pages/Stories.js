@@ -30,18 +30,20 @@ export default function Stories() {
         storiesList.innerHTML = '';
         stories.forEach(story => {
             const card = document.createElement('div');
-            card.className = 'bg-white rounded-2xl shadow-xl overflow-hidden transform transition hover:scale-105 hover:shadow-2xl cursor-pointer border-4 border-transparent hover:border-mateo-blue';
+            card.className = 'card-3d glass rounded-2xl overflow-hidden cursor-pointer group relative';
             card.innerHTML = `
-                <div class="relative h-48 overflow-hidden">
-                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-500 hover:rotate-2 hover:scale-110">
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
-                        <h3 class="text-white text-xl font-bold drop-shadow-md">${story.title}</h3>
+                <div class="relative h-64 overflow-hidden">
+                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                        <h3 class="text-white text-2xl font-bold drop-shadow-lg mb-2 leading-tight">${story.title}</h3>
+                        <div class="h-1 w-12 bg-mateo-yellow rounded-full group-hover:w-full transition-all duration-500"></div>
                     </div>
                 </div>
-                <div class="p-4">
-                    <p class="text-gray-600 line-clamp-3 mb-4">${story.desc}</p>
-                    <button class="w-full bg-mateo-blue text-white font-bold py-2 px-4 rounded-full hover:bg-blue-600 transition flex items-center justify-center gap-2">
-                        <span class="text-xl">📖</span> Leer Cuento
+                <div class="p-6">
+                    <p class="text-gray-200 line-clamp-3 mb-6 font-medium">${story.desc}</p>
+                    <button class="w-full btn-3d bg-white text-mateo-blue font-bold py-3 px-4 rounded-xl hover:text-blue-700 transition flex items-center justify-center gap-2 transform group-hover:scale-105">
+                        <span class="text-2xl">📖</span> Leer Cuento
                     </button>
                 </div>
             `;

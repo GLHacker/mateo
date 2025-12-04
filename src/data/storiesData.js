@@ -1,6 +1,13 @@
 import storySpace from '../assets/story_space.png';
 import storyDino from '../assets/story_dino.png';
 import mateoAvatar from '../assets/mateo_avatar.png';
+import storyBubbles from '../assets/story_bubbles.png';
+import storySlide from '../assets/story_slide.png';
+import storyElmo from '../assets/story_elmo.png';
+import storyRacer from '../assets/story_racer.png';
+import storyDreams from '../assets/story_dreams.png';
+import storyGarden from '../assets/story_garden.png';
+import storyLaughter from '../assets/story_laughter.png';
 
 export const storiesData = [
     {
@@ -78,7 +85,7 @@ Desde ese día, Tito se convirtió en la estrella de rock del Jurásico. Y aunqu
     {
         id: 3,
         title: 'La Misión del Capitán Mateo en el Mar de Burbujas',
-        image: mateoAvatar, // Placeholder
+        image: storyBubbles,
         desc: 'La hora del baño se convierte en una expedición submarina llena de sorpresas.',
         content: `
 Para muchos niños, la hora del baño es solo el momento de lavarse y ponerse el pijama. Pero para Mateo, cuando el agua empieza a llenar la bañera y el vapor empaña el espejo, comienza una misión de alto secreto.
@@ -111,7 +118,7 @@ Salió del baño limpio, relajado y feliz. La aventura había terminado por hoy,
     {
         id: 4,
         title: 'El Misterio del Tobogán Dorado',
-        image: mateoAvatar, // Placeholder
+        image: storySlide,
         desc: 'Mateo encuentra un tobogán mágico en el parque que lo lleva a una tierra de nubes.',
         content: `
 Era una tarde soleada y perfecta para ir al parque. Mateo, con sus zapatillas de correr más rápidas, llegó al parque de la colina, su favorito. Había columpios que llegaban hasta el cielo, un arenero que parecía un desierto infinito y, lo mejor de todo, el Gran Tobogán Amarillo. Pero ese día, algo era diferente.
@@ -144,7 +151,7 @@ Mateo miró al cielo, vio una nube con forma de sombrero de copa y sonrió.
     {
         id: 5,
         title: 'Elmo y la Fiesta Mágica de Disfraces',
-        image: mateoAvatar, // Placeholder
+        image: storyElmo,
         desc: 'Cuando Mateo se pone su traje de Elmo, ¡sus juguetes cobran vida para una fiesta!',
         content: `
 En el cajón de disfraces de Mateo había muchas opciones: un sombrero de pirata, una capa de superhéroe, unas orejas de conejo... Pero su favorito absoluto era el traje de Elmo. Era rojo, suave, peludito y tenía una capucha con los ojos grandes y la nariz naranja de Elmo.
@@ -180,7 +187,7 @@ Mateo bajó a cenar con una gran sonrisa. Sabía que sus amigos juguetes estarí
     {
         id: 6,
         title: 'El Conductor de Carreras más Rápido del Pasillo',
-        image: mateoAvatar, // Placeholder
+        image: storyRacer,
         desc: 'Mateo compite en la carrera más importante del año: El Gran Premio del Pasillo.',
         content: `
 "¡Señoras y señores, bienvenidos al Gran Premio del Pasillo!", anunció la voz del comentarista (que sonaba sospechosamente parecida a la de Mateo).
@@ -218,7 +225,7 @@ Porque para un piloto como Mateo, cada rincón de la casa es una nueva pista esp
     {
         id: 7,
         title: 'La Aventura en el Reino de los Sueños',
-        image: mateoAvatar, // Placeholder
+        image: storyDreams,
         desc: 'Mateo viaja a un mundo mágico donde los sueños se hacen realidad.',
         content: `
 La noche había caído sobre la casa. Todo estaba en silencio, excepto por el suave "tic-tac" del reloj del pasillo. Mateo estaba acurrucado en su cama, abrazando a su peluche favorito. Sus párpados pesaban como si tuvieran pequeñas anclas.
@@ -246,7 +253,7 @@ Poco a poco, el cielo violeta se desvaneció. Mateo abrió los ojos en su habita
     {
         id: 8,
         title: 'El Explorador del Jardín Gigante',
-        image: mateoAvatar, // Placeholder
+        image: storyGarden,
         desc: 'Mateo se encoge al tamaño de una hormiga y descubre un mundo gigante en su propio jardín.',
         content: `
 Era una mañana de verano y Mateo jugaba en el jardín. Estaba observando una fila de hormigas que marchaban muy ordenadas. "Me pregunto cómo se verá el mundo desde ahí abajo", pensó Mateo.
@@ -278,7 +285,7 @@ Toby lamió su cara, feliz. Mateo miró a las hormigas con nuevo respeto. Ahora 
     {
         id: 9,
         title: 'El Concierto de Risas',
-        image: mateoAvatar, // Placeholder
+        image: storyLaughter,
         desc: 'La risa de Mateo es tan contagiosa que organiza un concierto para alegrar a todos.',
         content: `
 Mateo tenía un superpoder muy especial: su risa. No era una risa cualquiera. Era una risa que empezaba en la barriga, subía como burbujas de refresco y salía por su boca como una explosión de alegría: "¡Jajajaja!". Y lo mejor de todo era que, quien la escuchaba, no podía evitar reírse también.
@@ -308,7 +315,7 @@ Desde ese día, el parque se convirtió en el lugar más feliz de la ciudad. Y a
     {
         id: 10,
         title: 'El Cumpleaños Inolvidable',
-        image: mateoAvatar, // Placeholder
+        image: storyLaughter, // Reusing for now
         desc: 'El primer cumpleaños de Mateo está lleno de magia, amigos y un deseo muy especial.',
         content: `
 Hoy era un día marcado con un círculo rojo en el calendario. ¡El cumpleaños de Mateo! La casa estaba decorada con globos de todos los colores del arcoíris, guirnaldas brillantes y un cartel gigante que decía "¡Feliz Cumpleaños, Mateo!".
