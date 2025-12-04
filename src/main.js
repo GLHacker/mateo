@@ -13,5 +13,6 @@ document.querySelector('#app').innerHTML = `
 const app = document.querySelector('#app');
 app.appendChild(Navbar());
 
-// Initial render
+// Initial render is now handled by router.js
 render(window.location.pathname);
+
