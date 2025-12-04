@@ -3,74 +3,98 @@ import { navigate } from '../router.js';
 
 export default function Home() {
     const container = document.createElement('div');
-    container.className = 'flex flex-col items-center justify-center min-h-screen w-full p-6 md:p-8';
+    container.className = 'min-h-screen w-full p-6 md:p-10';
+    container.style.cssText = `
+        background: linear-gradient(135deg, #FFF5E6 0%, #E8F5E9 50%, #E3F2FD 100%);
+    `;
 
-    // Hero Section
-    const heroSection = document.createElement('div');
-    heroSection.className = 'text-center mb-12 md:mb-16 fade-in-up';
+    // Content wrapper
+    const content = document.createElement('div');
+    content.className = 'max-w-6xl mx-auto';
 
-    // Beautiful Title
+    // Header Section
+    const header = document.createElement('div');
+    header.className = 'text-center mb-12 md:mb-16';
+
+    // Title with Canva style
     const title = document.createElement('h1');
-    title.className = 'text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight';
+    title.className = 'font-fredoka font-black mb-6';
     title.style.cssText = `
-        color: white;
-        text-shadow: 
-            0 0 10px rgba(255, 255, 255, 0.8),
-            0 0 20px rgba(255, 255, 255, 0.6),
-            0 0 30px rgba(255, 255, 255, 0.4),
-            3px 3px 6px rgba(0, 0, 0, 0.8),
-            6px 6px 12px rgba(0, 0, 0, 0.6);
-        font-family: 'Fredoka', 'Comic Sans MS', cursive;
-        letter-spacing: 2px;
+        font-size: clamp(3rem, 10vw, 6rem);
+        line-height: 1.1;
+        background: linear-gradient(135deg, #FF6B9D 0%, #FFD93D 50%, #6BCB77 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
     `;
     title.innerHTML = 'MATEO<br>LUIS<br>JENNIFER';
 
+    // Subtitle
     const subtitle = document.createElement('p');
-    subtitle.className = 'text-xl md:text-2xl text-white font-semibold mt-6 stagger-2 fade-in-up';
-    subtitle.style.cssText = `
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    `;
-    subtitle.textContent = '¡Bienvenidos a nuestro mundo!';
+    subtitle.className = 'text-2xl md:text-3xl font-poppins font-bold text-gray-700 mt-4';
+    subtitle.textContent = '¡Bienvenidos a nuestro mundo mágico! ✨';
 
-    heroSection.appendChild(title);
-    heroSection.appendChild(subtitle);
-    container.appendChild(heroSection);
+    header.appendChild(title);
+    header.appendChild(subtitle);
+    content.appendChild(header);
 
-    // Navigation Buttons Container
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.className = 'grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl px-4 stagger-3 fade-in-up';
+    // Cards Grid
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8';
 
-    const buttons = [
-        { text: 'Galería de Fotos', path: '/gallery', icon: '📸', color: 'from-pink-500 to-rose-600' },
-        { text: 'Cuentos Mágicos', path: '/stories', icon: '📚', color: 'from-purple-500 to-indigo-600' },
-        { text: 'Juegos Divertidos', path: '/games', icon: '🎮', color: 'from-blue-500 to-cyan-600' }
+    const cards = [
+        {
+            title: 'Galería',
+            icon: '📸',
+            path: '/gallery',
+            bg: 'linear-gradient(135deg, #FF6B9D 0%, #FFB6B9 100%)',
+            desc: 'Nuestras fotos'
+        },
+        {
+            title: 'Cuentos',
+            icon: '📚',
+            path: '/stories',
+            bg: 'linear-gradient(135deg, #A78BFA 0%, #C4B5FD 100%)',
+            desc: 'Historias mágicas'
+        },
+        {
+            title: 'Juegos',
+            icon: '🎮',
+            path: '/games',
+            bg: 'linear-gradient(135deg, #4D96FF 0%, #95E1D3 100%)',
+            desc: 'Diversión sin fin'
+        }
     ];
 
-    buttons.forEach((btn, index) => {
-        const button = document.createElement('button');
-        button.className = `group relative overflow-hidden rounded-3xl p-8 md:p-10 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 stagger-${index + 4} fade-in-up`;
-        button.style.cssText = `
-            background: linear-gradient(135deg, ${btn.color.split(' ')[0].replace('from-', '')} 0%, ${btn.color.split(' ')[2].replace('to-', '')} 100%);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.5),
-                0 1px 8px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            min-height: 140px;
+    cards.forEach(card => {
+        const cardEl = document.createElement('div');
+        cardEl.className = 'group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2';
+        cardEl.style.cssText = `
+            background: ${card.bg};
+            border-radius: 2rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         `;
 
-        button.innerHTML = `
-            <div class="relative z-10 flex flex-col items-center justify-center gap-3">
-                <span class="text-6xl md:text-7xl group-hover:scale-110 transition-transform duration-300">${btn.icon}</span>
-                <span class="text-xl md:text-2xl font-bold text-white tracking-wide">${btn.text}</span>
-            </div>
-            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        cardEl.innerHTML = `
+            <div class="text-8xl md:text-9xl mb-4 group-hover:scale-110 transition-transform duration-300">${card.icon}</div>
+            <h2 class="text-3xl md:text-4xl font-fredoka font-black text-white mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">${card.title}</h2>
+            <p class="text-lg md:text-xl font-poppins font-semibold text-white opacity-90">${card.desc}</p>
         `;
 
-        button.onclick = () => navigate(btn.path);
-        buttonsContainer.appendChild(button);
+        cardEl.onclick = () => navigate(card.path);
+        grid.appendChild(cardEl);
     });
 
-    container.appendChild(buttonsContainer);
+    content.appendChild(grid);
+    container.appendChild(content);
 
     return container;
 }

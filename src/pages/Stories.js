@@ -3,51 +3,67 @@ import { storageService } from '../services/storage.js';
 
 export default function Stories() {
     const container = document.createElement('div');
-    container.className = 'p-4 max-w-4xl mx-auto pb-24';
+    container.className = 'min-h-screen p-6 md:p-10 pt-28';
+    container.style.cssText = `
+        background: linear-gradient(135deg, #FFF5E6 0%, #E8F5E9 50%, #E3F2FD 100%);
+    `;
+
+    const content = document.createElement('div');
+    content.className = 'max-w-6xl mx-auto';
 
     const header = document.createElement('div');
-    header.className = 'text-center mb-8 animate-fade-in-down';
+    header.className = 'text-center mb-10 md:mb-14';
     header.innerHTML = `
-        <h1 class="text-4xl md:text-5xl text-mateo-yellow mb-2 drop-shadow-sm font-fredoka">Cuentos Mágicos</h1>
-        <p class="text-gray-600 font-semibold text-lg">Historias para soñar y aprender</p>
+        <h1 class="text-5xl md:text-6xl font-fredoka font-black mb-4" style="background: linear-gradient(135deg, #A78BFA 0%, #FF6B9D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">📚 Cuentos Mágicos</h1>
+        <p class="text-xl md:text-2xl font-poppins font-semibold text-gray-700">Historias para soñar y aprender ✨</p>
     `;
-    container.appendChild(header);
+    content.appendChild(header);
 
     const storiesList = document.createElement('div');
-    storiesList.className = 'grid grid-cols-1 md:grid-cols-2 gap-6';
-    container.appendChild(storiesList);
+    storiesList.className = 'grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8';
+    content.appendChild(storiesList);
+
+    container.appendChild(content);
 
     // Use the imported data
     const stories = storiesData;
 
     // Detail View Container (Hidden initially)
     const detailContainer = document.createElement('div');
-    detailContainer.className = 'hidden bg-white rounded-3xl shadow-xl p-6 animate-fade-in-up';
+    detailContainer.className = 'hidden';
     container.appendChild(detailContainer);
+
+    const colors = [
+        'linear-gradient(135deg, #FF6B9D 0%, #FFB6B9 100%)',
+        'linear-gradient(135deg, #A78BFA 0%, #C4B5FD 100%)',
+        'linear-gradient(135deg, #4D96FF 0%, #95E1D3 100%)',
+        'linear-gradient(135deg, #FFD93D 0%, #FFA94D 100%)',
+        'linear-gradient(135deg, #6BCB77 0%, #95E1D3 100%)',
+    ];
 
     // Helper to render the list
     const renderList = () => {
         storiesList.innerHTML = '';
-        storiesList.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 perspective-container';
 
         stories.forEach((story, index) => {
             const card = document.createElement('div');
-            card.className = `card-3d-enhanced glass rounded-3xl overflow-hidden cursor-pointer group relative opacity-0 fade-in-up stagger-${(index % 5) + 1}`;
+            card.className = 'group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2';
+            card.style.cssText = `
+                background: ${colors[index % colors.length]};
+                border-radius: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                overflow: hidden;
+            `;
             card.innerHTML = `
-                <div class="relative h-72 md:h-80 overflow-hidden">
-                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-115 group-hover:rotate-2">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-70 transition duration-500"></div>
-                    <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <h3 class="text-white text-2xl md:text-3xl font-bold drop-shadow-2xl mb-3 leading-tight">${story.title}</h3>
-                        <div class="h-1.5 w-16 bg-gradient-to-r from-mateo-yellow to-mateo-blue rounded-full group-hover:w-full transition-all duration-700"></div>
-                    </div>
+                <div class="relative h-56 md:h-64 overflow-hidden">
+                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/20"></div>
                 </div>
                 <div class="p-6 md:p-8">
-                    <p class="text-gray-100 line-clamp-3 mb-6 font-medium text-base md:text-lg leading-relaxed">${story.desc}</p>
-                    <button class="w-full btn-modern btn-success flex items-center justify-center gap-3 text-base md:text-lg">
-                        <span class="text-2xl md:text-3xl">📖</span> 
-                        <span>Leer Cuento</span>
+                    <h3 class="text-2xl md:text-3xl font-fredoka font-black text-white mb-3 leading-tight" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">${story.title}</h3>
+                    <p class="text-base md:text-lg font-poppins font-semibold text-white/90 mb-6 line-clamp-2">${story.desc}</p>
+                    <button class="w-full bg-white text-gray-800 font-poppins font-bold text-lg md:text-xl py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        📖 Leer Cuento
                     </button>
                 </div>
             `;

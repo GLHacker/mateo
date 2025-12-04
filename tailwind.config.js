@@ -7,15 +7,24 @@ export default {
     theme: {
         extend: {
             colors: {
-                'mateo-blue': '#4FC3F7',
-                'mateo-yellow': '#FFF176',
-                'mateo-red': '#FF8A65',
-                'mateo-green': '#81C784',
-                'mateo-purple': '#BA68C8',
+                'canva-yellow': '#FFD93D',
+                'canva-pink': '#FF6B9D',
+                'canva-green': '#6BCB77',
+                'canva-blue': '#4D96FF',
+                'canva-purple': '#A78BFA',
+                'canva-orange': '#FFA94D',
+                'canva-sky': '#95E1D3',
+                'canva-peach': '#FFB6B9',
+                // Legacy colors for compatibility
+                'mateo-blue': '#4D96FF',
+                'mateo-yellow': '#FFD93D',
+                'mateo-green': '#6BCB77',
+                'mateo-purple': '#A78BFA',
+                'mateo-red': '#FF6B9D',
             },
             fontFamily: {
-                'sans': ['Nunito', 'sans-serif'],
-                'display': ['Fredoka One', 'cursive'],
+                'fredoka': ['Fredoka', 'Comic Sans MS', 'cursive'],
+                'poppins': ['Poppins', 'sans-serif'],
             },
         },
     },
