@@ -103,7 +103,7 @@ button:focus-visible {
 }
 
 .app-background {
-  background-image: url('/background.jpg?v=2');
+  background-image: url('/mateo/background.jpg?v=3');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
