@@ -33,62 +33,36 @@ export default function Gallery() {
 
     // Mock Data (In a real app, this could also come from storage or a config file)
     const memories = [
-        desc: 'Caritas Divertidas',
-        story: '¡Mira todas esas caritas! Mateo es un experto en hacer gestos divertidos. A veces serio, a veces sonriente, a veces sorprendido. Cada expresión es una ventana a su personalidad única y encantadora. ¡Es imposible no sonreír al verlo!',
-        date: '2025-12-03',
-        likes: 55
-        },
-{
-    type: 'image',
-        url: photo15,
-            desc: 'Fiesta en USA',
-                story: '¡Party in the USA! Mateo luce su camiseta roja con orgullo. Está listo para celebrar y bailar al ritmo de la música. Con sus mejillas coloradas y su energía vibrante, es el alma de la fiesta donde quiera que vaya.',
-                    date: '2025-07-04',
-                        likes: 60
-},
-{
-    type: 'image',
-        url: photo16,
-            desc: 'Descanso del Guerrero',
-                story: 'Hasta los superhéroes necesitan descansar. Mateo se relaja en la cama grande, rodeado de almohadas suaves. Con una mirada pensativa, tal vez está soñando con su próxima gran hazaña o simplemente disfrutando de un momento de paz.',
-                    date: '2025-12-02',
-                        likes: 41
-},
-{
-    type: 'image',
-        url: photo17,
-            desc: 'Escalando Cimas',
-                story: 'Mateo es un aventurero nato. Aquí lo vemos en lo alto de su gimnasio de juegos, mirando hacia abajo como un rey desde su torre. No hay obstáculo demasiado alto para él. ¡El cielo es el límite para este pequeño escalador!',
-                    date: '2025-11-10',
-                        likes: 36
-},
-{
-    type: 'image',
-        url: photo18,
-            desc: 'Elmo y Mateo',
-                story: '¡Doble dosis de ternura! Mateo con su traje de Elmo es simplemente irresistible. Esa sonrisa pícara nos dice que está tramando alguna travesura divertida. Es un pequeño rayo de sol vestido de rojo.',
-                    date: '2025-10-31',
-                        likes: 58
-},
-{
-    type: 'image',
-        url: photo19,
-            desc: 'Risas Contagiosas',
-                story: '¡Jajaja! La risa de Mateo es tan pura y genuina que te hace sonreír al instante. En esta videollamada, su alegría traspasa la pantalla. Es un recordatorio de que la felicidad se encuentra en los momentos más simples y compartidos.',
-                    date: '2025-12-03',
-                        likes: 47
-},
+        { id: 1, src: photo1, desc: 'Primer día en el parque', story: 'Mateo descubrió que el césped hace cosquillas.' },
+        { id: 2, src: photo2, desc: 'Jugando con el abuelo', story: 'El abuelo hace las mejores caras graciosas.' },
+        { id: 3, src: photo3, desc: 'Descubriendo los colores', story: 'El rojo es su color favorito, ¡como las fresas!' },
+        { id: 4, src: photo4, desc: 'Risas en el baño', story: '¡Más burbujas, por favor!' },
+        { id: 5, src: photo5, desc: 'Su primer helado', story: 'Estaba frío, pero delicioso.' },
+        { id: 6, src: photo6, desc: 'Gateando por toda la casa', story: 'Nadie puede atrapar al veloz Mateo.' },
+        { id: 7, src: photo7, desc: 'Con su juguete favorito', story: 'El osito Sr. Abrazos va a todas partes.' },
+        { id: 8, src: photo8, desc: 'Durmiendo como un angelito', story: 'Soñando con nuevas aventuras.' },
+        { id: 9, src: photo9, desc: 'Fiesta de cumpleaños', story: '¡Un año lleno de amor y alegría!' },
+        { id: 10, src: photo10, desc: 'Explorando el jardín', story: 'Buscando tesoros entre las flores.' },
+        { id: 11, src: photo11, desc: 'Mirando las nubes', story: 'Esa parece un elefante.' },
+        { id: 12, src: photo12, desc: 'Jugando con bloques', story: '¡La torre más alta del mundo!' },
+        { id: 13, src: photo13, desc: 'Paseo en cochecito', story: 'Saludando a todos los perritos.' },
+        { id: 14, src: photo14, desc: 'Aprendiendo a caminar', story: 'Un paso, dos pasos... ¡y al suelo!' },
+        { id: 15, src: photo15, desc: 'En la playa', story: 'La arena es muy divertida.' },
+        { id: 16, src: photo16, desc: 'Con mamá', story: 'Los abrazos de mamá son los mejores.' },
+        { id: 17, src: photo17, desc: 'Con papá', story: 'Papá es muy fuerte y divertido.' },
+        { id: 18, src: photo18, desc: 'Leyendo un cuento', story: 'Había una vez...' },
+        { id: 19, src: photo19, desc: 'Sonrisa traviesa', story: '¿Qué estará planeando?' },
     ];
 
-const grid = document.createElement('div');
-grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6';
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6';
 
-memories.forEach((memory, index) => {
-    const card = document.createElement('div');
-    card.className = 'bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-fade-in-up';
-    card.style.animationDelay = `${index * 100}ms`;
+    memories.forEach((memory, index) => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-fade-in-up';
+        card.style.animationDelay = `${index * 100}ms`;
 
-    card.innerHTML = `
+        card.innerHTML = `
             <div class="relative aspect-square overflow-hidden cursor-pointer group">
                 <img src="${memory.url}" alt="${memory.desc}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -107,26 +81,26 @@ memories.forEach((memory, index) => {
             </div>
         `;
 
-    // Lightbox logic
-    const imgContainer = card.querySelector('.relative');
-    imgContainer.onclick = () => openLightbox(memory);
+        // Lightbox logic
+        const imgContainer = card.querySelector('.relative');
+        imgContainer.onclick = () => openLightbox(memory);
 
-    grid.appendChild(card);
-});
+        grid.appendChild(card);
+    });
 
-container.appendChild(grid);
+    container.appendChild(grid);
 
-// Lightbox Container (Hidden by default)
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox';
-lightbox.className = 'fixed inset-0 bg-black/90 z-[60] hidden flex items-center justify-center p-4';
-lightbox.onclick = (e) => {
-    if (e.target === lightbox) closeLightbox();
-};
-container.appendChild(lightbox);
+    // Lightbox Container (Hidden by default)
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'fixed inset-0 bg-black/90 z-[60] hidden flex items-center justify-center p-4';
+    lightbox.onclick = (e) => {
+        if (e.target === lightbox) closeLightbox();
+    };
+    container.appendChild(lightbox);
 
-function openLightbox(memory) {
-    lightbox.innerHTML = `
+    function openLightbox(memory) {
+        lightbox.innerHTML = `
             <div class="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl animate-scale-in m-4">
                 <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl z-10 bg-white/50 rounded-full w-10 h-10 flex items-center justify-center" onclick="document.getElementById('lightbox').classList.add('hidden')">×</button>
                 <div class="flex flex-col md:flex-row h-full max-h-[80vh]">
@@ -153,13 +127,13 @@ function openLightbox(memory) {
                 </div>
             </div>
         `;
-    lightbox.classList.remove('hidden');
-}
+        lightbox.classList.remove('hidden');
+    }
 
-function closeLightbox() {
-    lightbox.classList.add('hidden');
-}
+    function closeLightbox() {
+        lightbox.classList.add('hidden');
+    }
 
-return container;
+    return container;
 }
 
