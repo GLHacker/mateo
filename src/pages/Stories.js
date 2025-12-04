@@ -28,22 +28,26 @@ export default function Stories() {
     // Helper to render the list
     const renderList = () => {
         storiesList.innerHTML = '';
-        stories.forEach(story => {
+        storiesList.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 perspective-container';
+
+        stories.forEach((story, index) => {
             const card = document.createElement('div');
-            card.className = 'card-3d glass rounded-2xl overflow-hidden cursor-pointer group relative';
+            card.className = `card-3d-enhanced glass rounded-3xl overflow-hidden cursor-pointer group relative opacity-0 fade-in-up stagger-${(index % 5) + 1}`;
             card.innerHTML = `
-                <div class="relative h-64 overflow-hidden">
-                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition duration-500"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <h3 class="text-white text-2xl font-bold drop-shadow-lg mb-2 leading-tight">${story.title}</h3>
-                        <div class="h-1 w-12 bg-mateo-yellow rounded-full group-hover:w-full transition-all duration-500"></div>
+                <div class="relative h-72 md:h-80 overflow-hidden">
+                    <img src="${story.image}" alt="${story.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-115 group-hover:rotate-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-70 transition duration-500"></div>
+                    <div class="shimmer absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                        <h3 class="text-white text-2xl md:text-3xl font-bold drop-shadow-2xl mb-3 leading-tight">${story.title}</h3>
+                        <div class="h-1.5 w-16 bg-gradient-to-r from-mateo-yellow to-mateo-blue rounded-full group-hover:w-full transition-all duration-700"></div>
                     </div>
                 </div>
-                <div class="p-6">
-                    <p class="text-gray-200 line-clamp-3 mb-6 font-medium">${story.desc}</p>
-                    <button class="w-full btn-3d bg-white text-mateo-blue font-bold py-3 px-4 rounded-xl hover:text-blue-700 transition flex items-center justify-center gap-2 transform group-hover:scale-105">
-                        <span class="text-2xl">📖</span> Leer Cuento
+                <div class="p-6 md:p-8">
+                    <p class="text-gray-100 line-clamp-3 mb-6 font-medium text-base md:text-lg leading-relaxed">${story.desc}</p>
+                    <button class="w-full btn-modern btn-success flex items-center justify-center gap-3 text-base md:text-lg">
+                        <span class="text-2xl md:text-3xl">📖</span> 
+                        <span>Leer Cuento</span>
                     </button>
                 </div>
             `;
@@ -142,11 +146,11 @@ export default function Stories() {
                 </div>
                 
                 <div class="p-6 md:p-10">
-                    <div class="flex justify-between items-center mb-8">
-                        <button id="tts-btn" class="bg-mateo-green text-white font-bold py-2 px-6 rounded-full hover:bg-green-600 transition shadow-lg">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+                        <button id="tts-btn" class="w-full md:w-auto btn-modern btn-success px-8 py-4 text-base md:text-lg">
                             🔊 Escuchar Cuento
                         </button>
-                        <button id="like-btn" class="bg-pink-100 text-pink-500 font-bold py-2 px-6 rounded-full hover:bg-pink-200 transition shadow-md">
+                        <button id="like-btn" class="w-full md:w-auto btn-modern btn-danger px-8 py-4 text-base md:text-lg">
                             ❤️ ${likes}
                         </button>
                     </div>
@@ -162,10 +166,10 @@ export default function Stories() {
                         <div id="comments-list" class="max-h-60 overflow-y-auto mb-4 custom-scrollbar">
                             <!-- Comments loaded here -->
                         </div>
-                        <div class="flex gap-2">
-                            <input type="text" id="comment-input" placeholder="Escribe un comentario..." class="flex-1 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-mateo-blue">
-                            <button id="send-comment" class="bg-mateo-blue text-white p-3 rounded-xl hover:bg-blue-600 transition">
-                                ➤
+                        <div class="flex flex-col md:flex-row gap-3">
+                            <input type="text" id="comment-input" placeholder="Escribe un comentario..." class="flex-1 p-4 rounded-2xl border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-mateo-blue focus:border-transparent text-base">
+                            <button id="send-comment" class="btn-modern px-8 py-4 md:py-0 text-base">
+                                ➤ Enviar
                             </button>
                         </div>
                     </div>
