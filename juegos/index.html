@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos de Mateo</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .game-card {
+            width: 80%;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 15px;
+            background: #f0f0f0;
+            box-shadow: 5px 5px 15px #c2c2c2, -5px -5px 15px #ffffff;
+            text-align: center;
+        }
+        .game-card h2 {
+            margin-top: 0;
+        }
+        .game-card p {
+            margin-bottom: 1.5rem;
+        }
+        .game-card a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center; padding: 2rem 0;">Juegos Divertidos</h1>
+    </header>
+    <main>
+        <div class="game-list" id="game-list">
+            <!-- Game cards will be added here -->
+        </div>
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="../index.html" class="menu-button">Volver al Inicio</a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameList = document.getElementById('game-list');
+            const games = [
+                { title: "Memoria de Formas", description: "Encuentra las parejas de cartas iguales. ¡Un clásico para ejercitar la memoria!", file: "juego1.html" },
+                { title: "Recolector de Estrellas", description: "Mueve a Mateo por un pequeño mundo y recoge todas las estrellas brillantes.", file: "juego2.html" },
+                { title: "Torre de Bloques", description: "Construye la torre más alta que puedas con bloques de diferentes formas y colores.", file: "juego3.html" },
+                { title: "Sigue el Camino", description: "Ayuda a un cochecito a seguir un camino de luces. ¡No te salgas!", file: "juego4.html" },
+                { title: "Piano Mágico", description: "Toca una melodía divertida haciendo clic en las teclas de colores de este piano mágico.", file: "juego5.html" }
+            ];
+
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.classList.add('game-card');
+                gameCard.innerHTML = `
+                    <h2>${game.title}</h2>
+                    <p>${game.description}</p>
+                    <a href="${game.file}" class="menu-button">Jugar</a>
+                `;
+                gameList.appendChild(gameCard);
+            });
+        });
+    </script>
+</body>
+</html>

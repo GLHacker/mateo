@@ -1,22 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  font-family: 'Nunito', sans-serif;
-  background-color: #f0f9ff; /* Light blue background */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fredoka One', cursive;
+header {
+    text-align: center;
+    padding: 2rem 0;
 }
 
-.btn-primary {
-  @apply bg-mateo-blue text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-blue-400 transition transform hover:scale-105;
+.names-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 150px; /* Ensures space for the 3D canvas */
 }
 
-.card {
-  @apply bg-white rounded-2xl shadow-md p-4;
+.name {
+    font-size: 3rem;
+    font-weight: bold;
+    transition: transform 0.5s, color 0.5s;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    perspective: 1000px;
+}
+
+.menu-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #3a9ff0, #3086c9);
+    color: white;
+    cursor: pointer;
+    box-shadow: 5px 5px 15px #c2c2c2, -5px -5px 15px #ffffff;
+    transition: all 0.3s ease-in-out;
+    transform-style: preserve-3d;
+    text-decoration: none;
+}
+
+.menu-button:hover {
+    background: linear-gradient(145deg, #3086c9, #3a9ff0);
+    transform: translateZ(20px) translateY(-5px);
+    box-shadow: 10px 10px 25px #b1b1b1, -10px -10px 25px #ffffff;
+}
+
+.menu-button:active {
+    transform: translateZ(5px) translateY(2px);
+    box-shadow: 2px 2px 5px #c2c2c2, -2px -2px 5px #ffffff;
 }

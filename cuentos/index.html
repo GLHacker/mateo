@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentos de Mateo</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .story-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .story-card {
+            width: 300px;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: #f0f0f0;
+            box-shadow: 5px 5px 15px #c2c2c2, -5px -5px 15px #ffffff;
+            text-align: center;
+        }
+        .story-card h2 {
+            margin-top: 0;
+        }
+        .story-card a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cuentos de Mateo</h1>
+    </header>
+    <main>
+        <div class="story-list">
+            <!-- Story cards will be generated here -->
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html" class="menu-button">Volver al Inicio</a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storyList = document.querySelector('.story-list');
+            const stories = [
+                { title: "Mateo y el Carrito Mágico", file: "cuento1.html" },
+                { title: "La Aventura de Mateo en la Nieve", file: "cuento2.html" },
+                { title: "Mateo y el Disfraz de Superhéroe", file: "cuento3.html" },
+                { title: "Un Día de Compras con Mateo", file: "cuento4.html" },
+                { title: "Mateo y la Videollamada a la Abuela Elsa", file: "cuento5.html" },
+                { title: "El Sueño Invernal de Mateo", file: "cuento6.html" },
+                { title: "Mateo Aprende a Jugar Solo", file: "cuento7.html" },
+                { title: "La Escalera Misteriosa de Mateo", file: "cuento8.html" },
+                { title: "Mateo, Papá Luis y el Tío Luis", file: "cuento9.html" },
+                { title: "Mateo y su Familia Feliz", file: "cuento10.html" }
+            ];
+
+            stories.forEach(story => {
+                const storyCard = document.createElement('div');
+                storyCard.classList.add('story-card');
+                storyCard.innerHTML = `
+                    <h2>${story.title}</h2>
+                    <a href="${story.file}">Leer Cuento</a>
+                `;
+                storyList.appendChild(storyCard);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Mateo</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        .gallery-item {
+            border-radius: 15px;
+            background: #f0f0f0;
+            box-shadow: 5px 5px 15px #c2c2c2, -5px -5px 15px #ffffff;
+            overflow: hidden;
+            text-align: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            padding: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center; padding: 2rem 0;">Galería de Mateo</h1>
+    </header>
+    <main>
+        <div class="gallery-grid" id="gallery">
+            <!-- Images will be loaded here by script -->
+        </div>
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="../index.html" class="menu-button">Volver al Inicio</a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.getElementById('gallery');
+            const images = [
+                "familia mateo.jpeg",
+                "mateo  mama y papa.jpeg",
+                "mateo con tio luis.jpeg",
+                "mateo de compras.jpeg",
+                "mateo disfrasado rojo.jpeg",
+                "mateo durmiendo.jpeg",
+                "mateo en la escalera.jpeg",
+                "mateo facetime con abuela elsa.jpeg",
+                "mateo invierno.jpeg",
+                "mateo jugando.jpeg",
+                "mateo lindo.jpeg",
+                "mateo papa luis mama jennifer.jpeg",
+                "mateo papa luis y abuelo chang.jpeg",
+                "mateo tio luis y papa luis.jpeg",
+                "mateo y la nieve.jpeg",
+                "mateo y papa luis en  su primer carro loco.jpeg",
+                "mateo y su primer carrito.jpeg",
+                "mateo.jpeg",
+                "mato durmiendo.jpeg",
+                "papa luis y mama jennifer.jpeg",
+                "papa luis y mateo drisfrasado.jpeg",
+                "papa luis y mateo ven la nieve por primera ves.jpeg",
+                "papa luis y mateo.jpeg",
+                "tio luis y sobrino luis alberto.jpeg"
+            ];
+
+            images.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+
+                const imageName = image.split('.jpeg')[0];
+
+                galleryItem.innerHTML = `
+                    <a href="imagen${index + 1}.html">
+                        <img src="../imagenes/${image}" alt="${imageName}">
+                        <p>${imageName}</p>
+                    </a>
+                `;
+                gallery.appendChild(galleryItem);
+            });
+        });
+    </script>
+</body>
+</html>
