@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego: Sigue el Camino</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body, html {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+    <div class="controls">
+        <a href="index.html" class="menu-button">Volver a Juegos</a>
+    </div>
+    <div id="message" class="message">
+        ¡Te has salido del camino!<br>
+        <button class="menu-button" id="restart">Jugar de Nuevo</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('game-container');
+            let scene, camera, renderer, car;
+            let path = [];
+            let carSpeed = 0.3;
+            let gameOver = false;
+            const keys = {};
+
+            function init() {
+                // Scene & Camera
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(0, 5, 0);
+
+                // Renderer
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                container.appendChild(renderer.domElement);
+
+                // Lights
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                scene.add(ambientLight);
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+                directionalLight.position.set(0, 10, 5);
+                scene.add(directionalLight);
+
+                // Car
+                const carGeometry = new THREE.BoxGeometry(1, 0.5, 2);
+                const carMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+                car = new THREE.Mesh(carGeometry, carMaterial);
+                car.position.y = 0.25;
+                scene.add(car);
+
+                // Path
+                generatePath();
+
+                // Event Listeners
+                document.addEventListener('keydown', e => keys[e.code] = true);
+                document.addEventListener('keyup', e => keys[e.code] = false);
+                document.getElementById('restart').addEventListener('click', () => window.location.reload());
+                window.addEventListener('resize', onWindowResize);
+
+                animate();
+            }
+
+            function generatePath() {
+                let currentZ = 0;
+                let currentX = 0;
+                for (let i = 0; i < 200; i++) {
+                    const segmentGeometry = new THREE.PlaneGeometry(3, 3);
+                    const segmentMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
+                    const segment = new THREE.Mesh(segmentGeometry, segmentMaterial);
+
+                    currentX += (Math.random() - 0.5) * 2; // Gentle curves
+                    currentZ -= 3;
+
+                    segment.position.set(currentX, 0, currentZ);
+                    segment.rotation.x = Math.PI / 2;
+                    path.push(segment);
+                    scene.add(segment);
+                }
+            }
+
+            function updateCarPosition() {
+                if (gameOver) return;
+
+                // Move car forward
+                car.position.z -= carSpeed;
+
+                // Steering
+                if (keys['ArrowLeft'] || keys['KeyA']) car.position.x -= 0.1;
+                if (keys['ArrowRight'] || keys['KeyD']) car.position.x += 0.1;
+
+                // Update camera to follow car
+                camera.position.x = car.position.x;
+                camera.position.z = car.position.z + 5;
+                camera.lookAt(car.position);
+
+                // Check if car is on the path
+                const currentSegment = path.find(p => Math.abs(p.position.z - car.position.z) < 1.5);
+                if (!currentSegment || Math.abs(currentSegment.position.x - car.position.x) > 1.5) {
+                    endGame();
+                }
+
+                // Remove old path segments
+                const oldSegment = path.find(p => p.position.z > car.position.z + 10);
+                if (oldSegment) {
+                    scene.remove(oldSegment);
+                    path.splice(path.indexOf(oldSegment), 1);
+                }
+            }
+
+            function endGame() {
+                gameOver = true;
+                carSpeed = 0;
+                document.getElementById('message').style.display = 'block';
+            }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                updateCarPosition();
+                renderer.render(scene, camera);
+            }
+
+            init();
+        });
+    </script>
+</body>
+</html>

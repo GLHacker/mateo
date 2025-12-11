@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentos de Mateo</title>
+    <link rel="stylesheet" href="../interior.css">
+    <style>
+        .cuentos-list {
+            list-style: none;
+            padding: 0;
+        }
+        .cuento-item {
+            background: #ffffff;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cuento-item h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #A0522D;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cuentos de Mateo</h1>
+    </header>
+    <main>
+        <div class="content-container">
+            <ul class="cuentos-list" id="cuentos-list">
+                <!-- Cuentos will be loaded here -->
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <a href="../index.html" class="menu-button">Volver al Inicio</a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cuentosList = document.getElementById('cuentos-list');
+            for (let i = 1; i <= 10; i++) {
+                const listItem = document.createElement('li');
+                listItem.classList.add('cuento-item');
+                listItem.innerHTML = `
+                    <h2>Cuento #${i}</h2>
+                    <a href="cuento${i}.html" class="menu-button" style="font-size: 1.2rem; padding: 0.8rem 1.5rem;">Leer Cuento</a>
+                `;
+                cuentosList.appendChild(listItem);
+            }
+        });
+    </script>
+</body>
+</html>

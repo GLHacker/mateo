@@ -1,0 +1,62 @@
+/* styles for interior pages like Cuentos, Galeria, and Juegos */
+
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+    background-color: #FFF8E1; /* Soft cream background */
+    color: #4E342E; /* Dark brown text */
+    overflow: auto; /* Allow scrolling */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #A0522D;
+    text-shadow: 2px 2px 0px #FFD54F;
+}
+
+/* Re-style menu buttons for interior pages */
+.menu-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    background-color: #FFD700;
+    color: #A0522D;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 0 #F9A825;
+    transition: all 0.1s ease-in-out;
+    margin-top: 2rem;
+}
+
+.menu-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #F9A825;
+}
+
+.menu-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #F9A825;
+}
+
+/* General container for content */
+.content-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
